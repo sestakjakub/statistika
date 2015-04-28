@@ -8,7 +8,7 @@ summary (tabulka)
 
 # primka 
 
-model1 <- lm (novorozenec ~ matka, data = tabulka) 
+model1 <- lm (novorozenec ~ 1 + matka, data = tabulka) 
 model1
 prehled1 <- summary (model1)
 prehled1
@@ -26,6 +26,11 @@ prehled1$df
 prehled1$r.squared
 prehled1$adj.r.squared
 prehled1$fstatistic
+
+
+
+#added - residualni soucet ctvercu
+sum(model1$residual^2)
 
 # parabola
 
