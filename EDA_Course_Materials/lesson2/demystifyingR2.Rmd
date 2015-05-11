@@ -24,13 +24,15 @@ Subset the data so that you create a new data frame that contains
 cars that get 23 or more mpg (miles per gallon). Save it to a new data
 frame called efficient.
 ```{r}
+var = mtcars$mpg>=23
+efficient <- mtcars[var,]
 
 ```
 
 3. How many cars get more than 23 mpg? Use one of the commands you
 learned in the demystifying.R to answer this question.
 ```{r}
-
+dim(efficient)
 ```
 
 4. We can also use logical operators to find out which car(s) get greater
@@ -66,11 +68,13 @@ Now you try some.
 6. Print the cars that have a 1/4 mile time (qsec) less than or equal to
 16.90 seconds to the console.
 ```{r}
-
+?subset
+subset(mtcars,qsec<=16.9)
 ```
 
 7. Save the subset of cars that weigh under 2000 pounds (weight is measured in lb/1000) to a variable called lightCars. Print the numbers of cars and the subset to the console.
 ```{r}
+lightCars <- subset(mtcars,wt*1000<2000)
 
 ```
 
@@ -103,7 +107,7 @@ Open the table of values to see what values year takes on.
 
 Drop the year variable from the data set.
 ```{r}
-
+mtcars <- subset(mtcars, select = -year)
 ```
 
 
@@ -145,7 +149,7 @@ this class and submit the the Rmd file and html file. You'll need the
 knitr package to do that so let's install that now. Run these two lines
 of code.
 ```{r}
-install.packages('knitr', dependencies = T)
+#install.packages('knitr', dependencies = T)
 library(knitr)
 ```
 
@@ -161,6 +165,9 @@ answer a question to continue on in Lesson 2.
 Which car(s) have an mpg (miles per gallon) greater than or equal to 30
 OR hp (horsepower) less than 60? Create an R chunk of code to answer the question.
 
+```{r}
+subset(mtcars, mpg>=30 | hp<60)
+```
 
 
 Once you have the answer, go the [Udacity website](https://www.udacity.com/course/viewer#!/c-ud651/l-729069797/e-804129319/m-811719066) to continue with Lesson 2.
